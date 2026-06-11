@@ -4,5 +4,8 @@
   "private": true,
   "scripts": {
     "test": "jest --color"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
   }
 }
