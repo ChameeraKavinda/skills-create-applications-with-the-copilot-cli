@@ -1,4 +1,4 @@
-const { addition, subtraction, multiplication, division } = require('../calculator');
+const { addition, subtraction, multiplication, division, modulo, power, squareRoot } = require('../calculator');
 
 describe('Calculator - basic operations', () => {
   test('addition: basic and floats', () => {
@@ -34,5 +34,31 @@ describe('Calculator - basic operations', () => {
   test('invalid inputs throw TypeError', () => {
     expect(() => addition('a', 1)).toThrow(TypeError);
     expect(() => division('foo', 'bar')).toThrow(TypeError);
+  });
+
+  // Extended operations
+  test('modulo: remainder operation', () => {
+    expect(modulo(5, 2)).toBe(1);
+    expect(modulo('10', '3')).toBe(1);
+  });
+
+  test('modulo by zero should throw', () => {
+    expect(() => modulo(5, 0)).toThrow(/Modulo by zero/);
+  });
+
+  test('power: exponentiation', () => {
+    expect(power(2, 3)).toBe(8);
+    expect(power('2', '8')).toBe(256);
+    expect(power(2, -2)).toBeCloseTo(0.25);
+  });
+
+  test('squareRoot: positive and zero', () => {
+    expect(squareRoot(16)).toBe(4);
+    expect(squareRoot('0')).toBe(0);
+  });
+
+  test('squareRoot of negative should throw RangeError', () => {
+    expect(() => squareRoot(-9)).toThrow(RangeError);
+    expect(() => squareRoot('-4')).toThrow(RangeError);
   });
 });

@@ -22,4 +22,20 @@ function division(a, b) {
   return toNumber(a) / divisor;
 }
 
-module.exports = { addition, subtraction, multiplication, division };
+function modulo(a, b) {
+  const divisor = toNumber(b);
+  if (divisor === 0) throw new Error('Modulo by zero');
+  return toNumber(a) % divisor;
+}
+
+function power(base, exponent) {
+  return Math.pow(toNumber(base), toNumber(exponent));
+}
+
+function squareRoot(n) {
+  const num = toNumber(n);
+  if (num < 0) throw new RangeError('Cannot take square root of negative number');
+  return Math.sqrt(num);
+}
+
+module.exports = { addition, subtraction, multiplication, division, modulo, power, squareRoot };
